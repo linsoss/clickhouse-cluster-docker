@@ -35,7 +35,7 @@ services:
       - "ch02:172.18.1.6"
       - "ch03:172.18.1.7"
     volumes:
-      - ./ch-conf_1zk-3shard-1replica/metrika_ch01.xml:/etc/metrika.xml
+      - ./ch-conf/metrika_ch01.xml:/etc/metrika.xml
     depends_on:
       - "zookeeper"
 
@@ -57,7 +57,7 @@ services:
       - "ch01:172.18.1.5"
       - "ch03:172.18.1.7"
     volumes:
-      - ./ch-conf_1zk-3shard-1replica/metrika_ch02.xml:/etc/metrika.xml
+      - ./ch-conf/metrika_ch02.xml:/etc/metrika.xml
     depends_on:
       - "zookeeper"
 
@@ -79,7 +79,7 @@ services:
       - "ch01:172.18.1.5"
       - "ch02:172.18.1.6"
     volumes:
-      - ./ch-conf_1zk-3shard-1replica/metrika_ch03.xml:/etc/metrika.xml
+      - ./ch-conf/metrika_ch03.xml:/etc/metrika.xml
     depends_on:
       - "zookeeper"
 
