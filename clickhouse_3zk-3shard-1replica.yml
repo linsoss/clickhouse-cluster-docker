@@ -1,7 +1,7 @@
 # Author: Al-assad
 # Email: yulinying_1994@outlook.com
 # Date: 2020-11-27
-# Description: docker compose for clickhouse cluster with 3 shards and 1 replica, 1 zookeeper node
+# Description: docker compose for clickhouse cluster with 3 shards and 1 replica, 3 zookeeper node
 
 version: '2.1'
 
