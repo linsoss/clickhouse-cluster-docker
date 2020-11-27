@@ -7,9 +7,37 @@ version: '2.1'
 
 services:
 
-  zookeeper:
+  zookeeper1:
     image: zookeeper:3.6
     hostname: zk1
+    container_name: clickhouse-zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.2
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_PORT: 2181
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+
+  zookeeper2:
+    image: zookeeper:3.6
+    hostname: zk3
+    container_name: clickhouse-zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.2
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_PORT: 2181
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+
+  zookeeper3:
+    image: zookeeper:3.6
+    hostname: zk3
     container_name: clickhouse-zookeeper
     ports:
       - "2181:2181"
