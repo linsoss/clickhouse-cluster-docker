@@ -16,10 +16,6 @@ services:
     networks:
       clickhouse-cluster:
         ipv4_address: 172.18.1.2
-    extra_hosts:
-      - "ch01:172.18.1.5"
-      - "ch02:172.18.1.6"
-      - "ch03:172.18.1.7"
 
   clickhouse1:
     image: yandex/clickhouse-server:20.11
