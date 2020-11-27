@@ -22,6 +22,8 @@ docker-compose up
 
 ![image-20201127163735143](https://cdn.jsdelivr.net/gh/Al-assad/md-img@master/bucket-3/202011271637.png)
 
+<br>
+
 ### 宿主机连接 ClickHosue 集群
 
 1. 通过宿主机 ip 访问：
@@ -37,7 +39,9 @@ docker-compose up
    * clickhouse-server-ch02    172.18.1.6:8123
    * clickhouse-server-ch03    172.18.1.7:8123
 
-可以通过 DBeaver 或者 clickhosue-client 连接访问 clickhosue-server 集群；
+可以通过 DBeaver 或者 clickhosue-client 连接访问 clickhosue-server 集群。
+
+<br>
 
 ### 其他集群模式
 
@@ -57,6 +61,8 @@ docker-compose -f clickhosue_3zk-3shard-3replica up
 
 此外可以通过直接修改 `ch-conf/metrika_ch01.xml`、`ch-conf/metrika_ch02.xml`、`ch-conf/metrika_ch03.xml` 来修改 3 个 ch 节点的 metrika 配置。
 
+<br>
+
 ### 其他 ClickHouse 版本
 
 可以通过修改 `CLICKHOUSE_VERSION` 环境变量来自定义 CH 镜像版本，注意需要使用 yandex/clickhosue-server 的对应镜像版本。
@@ -70,8 +76,6 @@ export CLICKHOUSE_VERSION=20.10 && docker-compose config
 
 
 
-
-
-
+<br>
 
 <br>
