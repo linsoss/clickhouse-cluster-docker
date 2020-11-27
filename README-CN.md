@@ -2,7 +2,7 @@
 
 ![4cc49380-82ee-11ea-9baf-d971dbaafe63](https://cdn.jsdelivr.net/gh/Al-assad/md-img@master/bucket-3/202011271720.png)
 
-**English** ｜ [**中文**](README-CN.md)
+**[English](README.md)** ｜ [**中文**](README-CN.md)
 
 <br>
 
