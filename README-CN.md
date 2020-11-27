@@ -2,7 +2,7 @@
 
 ![4cc49380-82ee-11ea-9baf-d971dbaafe63](https://cdn.jsdelivr.net/gh/Al-assad/md-img@master/bucket-3/202011271720.png)
 
-English ｜ 中文
+**English** ｜ [**中文**](README-CN.md)
 
 <br>
 
@@ -21,8 +21,6 @@ docker-compose up
 默认创建的集群节点为 1 个 zookeeper 节点，3 个 clickhosue-server 节点（3 分片、1 副本）：
 
 ![image-20201127163735143](https://cdn.jsdelivr.net/gh/Al-assad/md-img@master/bucket-3/202011271637.png)
-
-<br>
 
 ### 宿主机连接 ClickHosue 集群
 
@@ -46,8 +44,6 @@ docker-compose up
 
 可以通过 DBeaver 或者 clickhosue-client 连接访问 clickhosue-server 集群。
 
-<br>
-
 ### 其他集群模式
 
 ```shell
@@ -65,8 +61,6 @@ docker-compose -f clickhosue_3zk-3shard-3replica up
 ```
 
 此外可以通过直接修改 `ch-conf/metrika_ch01.xml`、`ch-conf/metrika_ch02.xml`、`ch-conf/metrika_ch03.xml` 来修改 3 个 ch 节点的 metrika 配置。
-
-<br>
 
 ### 其他 ClickHouse 版本
 
