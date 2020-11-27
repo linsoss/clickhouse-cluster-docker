@@ -44,7 +44,7 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
   clickhouse1:
-    image: yandex/clickhouse-server:20.11
+    image: yandex/clickhouse-server:${CLICKHOUSE_VERSION:-20.11}
     ports:
       - "8124:8123"
     hostname: ch01
@@ -70,7 +70,7 @@ services:
       - "zk3"
 
   clickhouse2:
-    image: yandex/clickhouse-server:20.11
+    image: yandex/clickhouse-server:${CLICKHOUSE_VERSION:-20.11}
     ports:
       - "8125:8123"
     hostname: ch02
@@ -96,7 +96,7 @@ services:
       - "zk3"
 
   clickhouse3:
-    image: yandex/clickhouse-server:20.11
+    image: yandex/clickhouse-server:${CLICKHOUSE_VERSION:-20.11}
     ports:
       - "8126:8123"
     hostname: ch03
