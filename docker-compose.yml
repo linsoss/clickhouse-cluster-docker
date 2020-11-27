@@ -1,0 +1,96 @@
+# Author: Al-assad
+# Email: yulinying_1994@outlook.com
+# Date: 2020-11-27
+# Description: docker compose for clickhouse cluster with 3 shards and 1 relica, 1 zookeeper node
+
+version: '2.1'
+
+services:
+
+  zookeeper:
+    image: zookeeper:3.6
+    hostname: zk1
+    container_name: clickhouse-zookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.2
+    extra_hosts:
+      - "ch01:172.18.1.5"
+      - "ch02:172.18.1.6"
+      - "ch03:172.18.1.7"
+
+  clickhouse1:
+    image: yandex/clickhouse-server:20.11
+    ports:
+      - "8124:8123"
+    hostname: ch01
+    container_name: clickhouse-server-ch01
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.5
+    extra_hosts:
+      - "zk1:172.18.1.2"
+      - "ch02:172.18.1.6"
+      - "ch03:172.18.1.7"
+    volumes:
+      - ./clickhouse-config_1zk-3shard-1replica/metrika_ch01.xml:/etc/metrika.xml
+    depends_on:
+      - "zookeeper"
+
+  clickhouse2:
+    image: yandex/clickhouse-server:20.11
+    ports:
+      - "8125:8123"
+    hostname: ch02
+    container_name: clickhouse-server-ch02
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.6
+    extra_hosts:
+      - "zk1:172.18.1.2"
+      - "ch01:172.18.1.5"
+      - "ch03:172.18.1.7"
+    volumes:
+      - ./clickhouse-config_1zk-3shard-1replica/metrika_ch02.xml:/etc/metrika.xml
+    depends_on:
+      - "zookeeper"
+
+  clickhouse3:
+    image: yandex/clickhouse-server:20.11
+    ports:
+      - "8126:8123"
+    hostname: ch03
+    container_name: clickhouse-server-ch03
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    networks:
+      clickhouse-cluster:
+        ipv4_address: 172.18.1.7
+    extra_hosts:
+      - "zk1:172.18.1.2"
+      - "ch01:172.18.1.5"
+      - "ch02:172.18.1.6"
+    volumes:
+      - ./clickhouse-config_1zk-3shard-1replica/metrika_ch03.xml:/etc/metrika.xml
+    depends_on:
+      - "zookeeper"
+
+networks:
+  clickhouse-cluster:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.1.0/16
