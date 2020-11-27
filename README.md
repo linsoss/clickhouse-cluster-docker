@@ -26,18 +26,23 @@ docker-compose up
 
 ### 宿主机连接 ClickHosue 集群
 
-1. 通过宿主机 ip 访问：
-   * clickhouse-server-ch01    127.0.0.1:8124
-   * clickhouse-server-ch02    127.0.0.1:8125
-   * clickhouse-server-ch03    127.0.0.1:8126
+1. 通过宿主机 ip 访问：[]()
+
+   ```shell
+   clickhouse-server-ch01    127.0.0.1:8124
+   clickhouse-server-ch02    127.0.0.1:8125
+   clickhouse-server-ch03    127.0.0.1:8126
+   ```
 
 2. 通过 docker 子网 ip 访问：
 
    如果宿主机为 MacOS，可以通过 [mac-docker-connector](https://github.com/wenjunxiao/mac-docker-connector) 项目直接访问是 docker 子网络：
 
-   * clickhouse-server-ch01    172.18.1.5:8123
-   * clickhouse-server-ch02    172.18.1.6:8123
-   * clickhouse-server-ch03    172.18.1.7:8123
+   ```shell
+   clickhouse-server-ch01    172.18.1.5:8123
+   clickhouse-server-ch02    172.18.1.6:8123
+   clickhouse-server-ch03    172.18.1.7:8123
+   ```
 
 可以通过 DBeaver 或者 clickhosue-client 连接访问 clickhosue-server 集群。
 
