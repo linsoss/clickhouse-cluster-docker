@@ -7,47 +7,41 @@ version: '2.1'
 
 services:
 
-  zookeeper1:
+  zk1:
     image: zookeeper:3.6
     hostname: zk1
-    container_name: clickhouse-zookeeper
-    ports:
-      - "2181:2181"
+    container_name: clickhouse-zookeeper-zk1
     networks:
       clickhouse-cluster:
         ipv4_address: 172.18.1.2
     environment:
       ZOO_MY_ID: 1
       ZOO_PORT: 2181
-      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
-  zookeeper2:
+  zk2:
     image: zookeeper:3.6
-    hostname: zk3
-    container_name: clickhouse-zookeeper
-    ports:
-      - "2181:2181"
+    hostname: zk2
+    container_name: clickhouse-zookeeper-zk2
     networks:
       clickhouse-cluster:
-        ipv4_address: 172.18.1.2
+        ipv4_address: 172.18.1.3
     environment:
-      ZOO_MY_ID: 1
+      ZOO_MY_ID: 2
       ZOO_PORT: 2181
-      ZOO_SERVERS: server.1=zookeeper1:2888:3888 server.2=zookeeper2:2888:3888 server.3=zookeeper3:2888:3888
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
-  zookeeper3:
+  zk3:
     image: zookeeper:3.6
     hostname: zk3
-    container_name: clickhouse-zookeeper
-    ports:
-      - "2181:2181"
+    container_name: clickhouse-zookeeper-zk3
     networks:
       clickhouse-cluster:
-        ipv4_address: 172.18.1.2
-    extra_hosts:
-      - "ch01:172.18.1.5"
-      - "ch02:172.18.1.6"
-      - "ch03:172.18.1.7"
+        ipv4_address: 172.18.1.4
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_PORT: 2181
+      ZOO_SERVERS: server.1=zk1:2888:3888 server.2=zk2:2888:3888 server.3=zk3:2888:3888
 
   clickhouse1:
     image: yandex/clickhouse-server:20.11
@@ -64,12 +58,16 @@ services:
         ipv4_address: 172.18.1.5
     extra_hosts:
       - "zk1:172.18.1.2"
+      - "zk2:172.18.1.3"
+      - "zk3:172.18.1.4"
       - "ch02:172.18.1.6"
       - "ch03:172.18.1.7"
     volumes:
       - ./ch-conf_1zk-3shard-3replica/metrika_ch01.xml:/etc/metrika.xml
     depends_on:
-      - "zookeeper"
+      - "zk1"
+      - "zk2"
+      - "zk3"
 
   clickhouse2:
     image: yandex/clickhouse-server:20.11
@@ -86,12 +84,16 @@ services:
         ipv4_address: 172.18.1.6
     extra_hosts:
       - "zk1:172.18.1.2"
+      - "zk2:172.18.1.3"
+      - "zk3:172.18.1.4"
       - "ch01:172.18.1.5"
       - "ch03:172.18.1.7"
     volumes:
       - ./ch-conf_1zk-3shard-3replica/metrika_ch02.xml:/etc/metrika.xml
     depends_on:
-      - "zookeeper"
+      - "zk1"
+      - "zk2"
+      - "zk3"
 
   clickhouse3:
     image: yandex/clickhouse-server:20.11
@@ -108,12 +110,16 @@ services:
         ipv4_address: 172.18.1.7
     extra_hosts:
       - "zk1:172.18.1.2"
+      - "zk2:172.18.1.3"
+      - "zk3:172.18.1.4"
       - "ch01:172.18.1.5"
       - "ch02:172.18.1.6"
     volumes:
       - ./ch-conf_1zk-3shard-3replica/metrika_ch03.xml:/etc/metrika.xml
     depends_on:
-      - "zookeeper"
+      - "zk1"
+      - "zk2"
+      - "zk3"
 
 networks:
   clickhouse-cluster:
