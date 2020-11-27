@@ -24,7 +24,7 @@ docker-compose up
 
 ### 宿主机连接 ClickHosue 集群
 
-1. 通过宿主机 ip 访问：[]()
+1. 通过宿主机 ip 访问：
 
    ```shell
    clickhouse-server-ch01    127.0.0.1:8124
