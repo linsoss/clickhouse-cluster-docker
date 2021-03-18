@@ -1,6 +1,6 @@
 # ClickHouse Cluster Docker Compose
 
-![4cc49380-82ee-11ea-9baf-d971dbaafe63](https://cdn.jsdelivr.net/gh/Al-assad/md-img@master/bucket-3/202011271720.png)
+![4cc49380-82ee-11ea-9baf-d971dbaafe63](https://github.com/Al-assad/md-img/blob/master/bucket-3/202011271720.png)
 
 **[English](README.md)** ｜ [**中文**](README-CN.md)
 
