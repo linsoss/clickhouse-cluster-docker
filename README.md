@@ -6,7 +6,7 @@
 
 <br>
 
-Docker-compose script for quickly building a ClickHouse cluster environment, based on the official [yandex/clickhouse-server](https://hub.docker.com/r/yandex/clickhouse-server) image, supports custom clickhosue-server versions. 
+Docker-compose script for quickly building a ClickHouse cluster environment, based on the official [clickhouse/clickhouse-server](https://hub.docker.com/r/clickhouse/clickhouse-server) image, supports custom clickhosue-server versions. 
 
 The default component version is as follows ：
 
