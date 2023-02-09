@@ -6,7 +6,7 @@
 
 <br>
 
-用于快速构建 ClickHouse Server 集群环境的 docker-compose 脚本，基于 [yandex/clickHouse-server](yandex/clickHouse-server) 官方镜像，支持自定义 clickhosue-server 版本，默认组件版本如下：
+用于快速构建 ClickHouse Server 集群环境的 docker-compose 脚本，基于 [clickhouse/clickHouse-server](clickhouse/clickHouse-server) 官方镜像，支持自定义 clickhosue-server 版本，默认组件版本如下：
 
 * zookeeper：3.6；
 * clickHouse-server：20.11 ；
@@ -64,7 +64,7 @@ docker-compose -f clickhosue_3zk-3shard-3replica up
 
 ### 其他 ClickHouse 版本
 
-可以通过修改 `CLICKHOUSE_VERSION` 环境变量来自定义 CH 镜像版本，注意需要使用 yandex/clickhosue-server 的对应镜像版本。
+可以通过修改 `CLICKHOUSE_VERSION` 环境变量来自定义 CH 镜像版本，注意需要使用 clickhouse/clickhosue-server 的对应镜像版本。
 
 ```shell
 # 使用 clickhouse-server 20.10 版本
