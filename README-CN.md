@@ -67,8 +67,8 @@ docker-compose -f clickhosue_3zk-3shard-3replica up
 可以通过修改 `CLICKHOUSE_VERSION` 环境变量来自定义 CH 镜像版本，注意需要使用 clickhouse/clickhosue-server 的对应镜像版本。
 
 ```shell
-# 使用 clickhouse-server 20.10 版本
-export CLICKHOUSE_VERSION=20.10 && docker-compose config
+# 使用 clickhouse-server 23.8.4 版本
+export CLICKHOUSE_VERSION=23.8.4 && docker-compose config
 ```
 
 
