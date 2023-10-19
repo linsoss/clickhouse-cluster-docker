@@ -66,11 +66,11 @@ In addition, you can also modify the metrika configuration for the three CH node
 
 ### Other ClickHouse Image Version
 
-You can customize the CH image version by modifying the environment variable ```CLICKHOUSE_VERSION```.
+Of course, You can customize the CH image version by modifying the environment variable ```CLICKHOUSE_VERSION```.
 
 ```shell
-# use clickhouse-server v20.10
-export CLICKHOUSE_VERSION=20.10 && docker-compose config
+# use clickhouse-server v23.8.4
+export CLICKHOUSE_VERSION=23.8.4 && docker-compose config
 ```
 
 <br>
